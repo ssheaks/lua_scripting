@@ -69,7 +69,7 @@ prince_codes = {
     {Page = 2, Line = 1, Word = 2, Code = "S"},
     {Page = 3, Line = 4, Word = 9, Code = "K"},
     {Page = 3, Line = 5, Word = 1, Code = "J"},
-    {Page = 6, Line = 3, Word = 9, Code = "T"},
+    {Page = 3, Line = 3, Word = 9, Code = "T"},
     {Page = 3, Line = 1, Word = 7, Code = "B"},
     {Page = 4, Line = 2, Word = 5, Code = "C"},
     {Page = 4, Line = 3, Word = 3, Code = "F"},
@@ -100,3 +100,37 @@ prince_codes = {
     {Page = 13, Line = 4, Word = 8, Code = "S"},
     {Page = 13, Line = 6, Word = 2, Code = "G"}
 }
+
+-- Read the page from the user
+print("What is the Page you are looking for?")
+local page = io.read("*n")
+
+-- Read the line from the user
+print("What is the Line you are looking for?")
+local line = io.read("*n")
+
+-- Read the word from the user
+print("What is the Word you are looking for?")
+local word = io.read("*n")
+
+-- flag variable that signals if we found the code
+local found = false
+
+-- Loop and search all entries of the prince_codes table
+for i,v in ipairs(prince_codes) do
+    print(i, v)
+    print(v.Page)
+    for k,val in pairs(v)do
+        print(k,val, v)
+        if (v.Page == page and v.Line == line and v.Word == word) then
+            print("Your code is "..v.Code)
+            found = true
+            return v.Code
+        end
+    end
+end
+
+-- Tell user if combination was not found
+if not found then
+    print("Sorry this combination does not exist")
+end
