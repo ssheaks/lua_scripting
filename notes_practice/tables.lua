@@ -144,3 +144,20 @@ local M = {
 print(M[1][1].." "..M[1][2].." "..M[1][3])
 print(M[2][1].." "..M[2][2].." "..M[2][3])
 print(M[3][1].." "..M[3][2].." "..M[3][3])
+
+-- create a new table
+mt = {}
+
+-- loop all matrix values
+for i=1, 5 do -- N (5) is the number of rows, i used to keep track of row indices
+    mt[i] = {} -- create a new row
+    for j=1, 3 do -- M(3) is the number of cols, j used to keep track of col indices
+        mt[i][j] = 0
+    end
+end
+-- read values in matrix
+for i, v in ipairs(mt) do
+    for j, val in ipairs(v) do
+        print(i..', '..j,val)
+    end
+end
